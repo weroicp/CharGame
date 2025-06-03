@@ -1,0 +1,22 @@
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
+
+repositories {
+  maven { url 'https://maven.aliyun.com/repository/public' } // 阿里云 Maven 仓库
+  mavenCentral() // Maven 中央仓库
+//  jcenter() // JCenter 仓库（已停止服务，但有些旧项目仍依赖）
+}
+
+dependencies {
+  api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+  api "com.badlogicgames.box2dlights:box2dlights:$box2dlightsVersion"
+  api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+  api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+  api "com.badlogicgames.gdx:gdx:$gdxVersion"
+  api "org.apache.groovy:groovy-all:$groovyVersion"
+  api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+  if(enableGraalNative == 'true') {
+    implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
+  }
+}
